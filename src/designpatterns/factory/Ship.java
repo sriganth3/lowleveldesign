@@ -7,13 +7,13 @@ public class Ship implements Transport {
 	
 	@Override
 	public String deliver() {
-		// TODO Auto-generated method stub
+		
 		return delivery;
 	}
 
 	@Override
 	public String getTransport() {
-		// TODO Auto-generated method stub
+		
 		return transport;
 	}
 
