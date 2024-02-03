@@ -4,11 +4,11 @@ Design patterns are typical solutions to commonly occurring problems in software
 
 ## Type of Design Pattern
 1. Creational patterns
-	-> Factory
-	-> Abstract Factory
-	-> Builder
-	-> Prototype
-	-> Singleton
+   - Factory
+   - Abstract Factory
+   - Builder
+   - Prototype
+   - Singleton
 2. Structural patterns
 3. Behavioral patterns
 
