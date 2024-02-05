@@ -10,6 +10,7 @@ import designpatterns.builder.CarConcreteBuilder;
 import designpatterns.factory.Logistics;
 import designpatterns.factory.LogisticsFactory;
 import designpatterns.factory.Transport;
+import designpatterns.singleton.Singleton;
 
 public class Test {
 
@@ -27,6 +28,9 @@ public class Test {
 		//Builder Design Pattern
 		callBuilder();
 		
+		//Singleton Design Pattern
+		callSingleton();
+		
 	}
 
 	/*
@@ -34,6 +38,7 @@ public class Test {
 	 * 
 	 */
 	public static void callFactory(String mode) {
+		
 		LogisticsFactory factory = new LogisticsFactory();
 		try {
 			Logistics logistics = factory.createLogistics(mode);
@@ -50,6 +55,7 @@ public class Test {
 	 * 
 	 */
 	private static void callAbstractFactory() {
+		
         GadgetFactory phoneFactory = new ConcreteMobileFactory();
      
         Gadget phone = phoneFactory.createGadget("iPhone 13");
@@ -67,6 +73,7 @@ public class Test {
 	 * 
 	 */
 	private static void callBuilder() {
+		
 		CarBuilder builder = new CarConcreteBuilder(); 
 		Car newCar = builder.setEngine("Hybrid").setSeats(5).setChassis("Red").setGPS().setTripComputer("Complex").build();
 		
@@ -77,6 +84,19 @@ public class Test {
 		
 		System.out.println(oldCar.toString());
 		
+	}
+	
+	/*
+	 *  Singleton Design Pattern
+	 * 
+	 */
+	private static void callSingleton() {
+		
+		Singleton firstInstance = Singleton.getInstance();
+		System.out.println("Singleton first instance - "+ firstInstance.toString() +" created around" + Singleton.value);
+		
+		Singleton secondInstance = Singleton.getInstance();
+		System.out.println("Singleton second instance - "+ secondInstance.toString() +" created around" + Singleton.value);
 		
 	}
 
