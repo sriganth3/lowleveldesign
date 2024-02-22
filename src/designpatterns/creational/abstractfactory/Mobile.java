@@ -1,4 +1,4 @@
-package designpatterns.abstractfactory;
+package designpatterns.creational.abstractfactory;
 
 public class Mobile extends Gadget{
 

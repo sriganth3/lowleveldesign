@@ -1,8 +1,9 @@
-package designpatterns.factory;
+package designpatterns.creational.factory;
 
-public class RoadLogistics implements Logistics{
+public class SeaLogistics implements Logistics {
 
 	Transport transport;
+	
 	private void delivery() {
 		
 		System.out.println(transport.deliver());
@@ -11,7 +12,7 @@ public class RoadLogistics implements Logistics{
 	@Override
 	public Transport createTransport() {
 		
-		transport = new Truck();
+		transport = new Ship();
 		delivery();
 		return transport;
 	}
