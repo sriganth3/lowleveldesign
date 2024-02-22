@@ -1,17 +1,17 @@
 package designpatterns;
 
-import designpatterns.abstractfactory.Gadget;
-import designpatterns.abstractfactory.ConcreteMobileFactory;
-import designpatterns.abstractfactory.ConcreteLaptopFactory;
-import designpatterns.abstractfactory.GadgetFactory;
-import designpatterns.builder.Car;
-import designpatterns.builder.CarBuilder;
-import designpatterns.builder.CarConcreteBuilder;
-import designpatterns.factory.Logistics;
-import designpatterns.factory.LogisticsFactory;
-import designpatterns.factory.Transport;
-import designpatterns.prototype.Circle;
-import designpatterns.singleton.Singleton;
+import designpatterns.creational.abstractfactory.Gadget;
+import designpatterns.creational.abstractfactory.ConcreteMobileFactory;
+import designpatterns.creational.abstractfactory.ConcreteLaptopFactory;
+import designpatterns.creational.abstractfactory.GadgetFactory;
+import designpatterns.creational.builder.Car;
+import designpatterns.creational.builder.CarBuilder;
+import designpatterns.creational.builder.CarConcreteBuilder;
+import designpatterns.creational.factory.Logistics;
+import designpatterns.creational.factory.LogisticsFactory;
+import designpatterns.creational.factory.Transport;
+import designpatterns.creational.prototype.Circle;
+import designpatterns.creational.singleton.Singleton;
 
 public class CreationalPatternTest {
 
@@ -19,20 +19,25 @@ public class CreationalPatternTest {
 		
 		
 		//Factory Design Pattern
+		header("Factory Design Pattern");
 		callFactory("sea");
 		callFactory("road");
 		callFactory("air");
 		
 		//Abstract Factory Design Pattern
+		header("Abstract Factory Design Pattern");
 		callAbstractFactory();
 		
 		//Builder Design Pattern
+		header("Builder Design Pattern");
 		callBuilder();
 		
 		//Singleton Design Pattern
+		header("Singleton Design Pattern");
 		callSingleton();
 		
-		
+		//Prototype Design Pattern
+		header("Prototype Design Pattern");
 		callProtoType();
 	}
 
@@ -136,6 +141,12 @@ public class CreationalPatternTest {
 		}else {
 			System.out.println("Object are different and not identical");
 		}
+	}
+	
+	private static void header(String designPattern) {
+		System.out.println("---------------------------------------------------------");
+		System.out.println("        ---------" + designPattern + "---------          ");
+		System.out.println();
 	}
 
 }
