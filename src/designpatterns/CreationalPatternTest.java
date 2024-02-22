@@ -10,9 +10,10 @@ import designpatterns.builder.CarConcreteBuilder;
 import designpatterns.factory.Logistics;
 import designpatterns.factory.LogisticsFactory;
 import designpatterns.factory.Transport;
+import designpatterns.prototype.Circle;
 import designpatterns.singleton.Singleton;
 
-public class Test {
+public class CreationalPatternTest {
 
 	public static void main(String[] args) {
 		
@@ -31,7 +32,10 @@ public class Test {
 		//Singleton Design Pattern
 		callSingleton();
 		
+		
+		callProtoType();
 	}
+
 
 	/*
 	 * Factory Design Pattern
@@ -98,6 +102,40 @@ public class Test {
 		Singleton secondInstance = Singleton.getInstance();
 		System.out.println("Singleton second instance - "+ secondInstance.toString() +" created around" + Singleton.value);
 		
+	}
+	
+	/*
+	 * Prototype Design Pattern
+	 * 
+	 */
+	private static void callProtoType() {
+		
+		Circle circle = new Circle();
+		circle.color = "Red";
+		circle.x = 5;
+		circle.y = 6;
+		circle.radius = 10;
+		
+		Circle anotherCircle = (Circle) circle.clone();
+		
+		validateClone(circle, circle);
+		
+		validateClone(circle, anotherCircle);
+		
+		anotherCircle.color = "Blue";
+		validateClone(circle, anotherCircle);
+	}
+
+
+	private static void validateClone(Circle circle, Circle anotherCircle) {
+		if(circle == anotherCircle) {
+			System.out.println("Objects are same");
+		}
+		else if(circle.equals(anotherCircle)) {
+			System.out.println("Objects are different and identical");
+		}else {
+			System.out.println("Object are different and not identical");
+		}
 	}
 
 }
