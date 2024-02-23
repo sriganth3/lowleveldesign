@@ -2,6 +2,7 @@ package designpatterns;
 
 import designpatterns.creational.abstractfactory.Gadget;
 import designpatterns.creational.abstractfactory.ConcreteMobileFactory;
+import designpatterns.common.Utils;
 import designpatterns.creational.abstractfactory.ConcreteLaptopFactory;
 import designpatterns.creational.abstractfactory.GadgetFactory;
 import designpatterns.creational.builder.Car;
@@ -19,25 +20,25 @@ public class CreationalPatternTest {
 		
 		
 		//Factory Design Pattern
-		header("Factory Design Pattern");
+		Utils.header("Factory Design Pattern");
 		callFactory("sea");
 		callFactory("road");
 		callFactory("air");
 		
 		//Abstract Factory Design Pattern
-		header("Abstract Factory Design Pattern");
+		Utils.header("Abstract Factory Design Pattern");
 		callAbstractFactory();
 		
 		//Builder Design Pattern
-		header("Builder Design Pattern");
+		Utils.header("Builder Design Pattern");
 		callBuilder();
 		
 		//Singleton Design Pattern
-		header("Singleton Design Pattern");
+		Utils.header("Singleton Design Pattern");
 		callSingleton();
 		
 		//Prototype Design Pattern
-		header("Prototype Design Pattern");
+		Utils.header("Prototype Design Pattern");
 		callProtoType();
 	}
 
@@ -143,10 +144,5 @@ public class CreationalPatternTest {
 		}
 	}
 	
-	private static void header(String designPattern) {
-		System.out.println("---------------------------------------------------------");
-		System.out.println("        ---------" + designPattern + "---------          ");
-		System.out.println();
-	}
-
+	
 }
