@@ -18,6 +18,7 @@ import designpatterns.structural.composite.product.Book;
 import designpatterns.structural.composite.CompositeBox;
 import designpatterns.structural.composite.DeliveryService;
 import designpatterns.structural.composite.product.VideoGame;
+import designpatterns.structural.facade.DwarvenGoldMineFacade;
 
 public class StructuralPatternTest {
 
@@ -34,6 +35,10 @@ public class StructuralPatternTest {
 		// Composite Design Pattern
 		Utils.header("Composite Design Pattern");
 		callComposite();
+		
+		// Facade Design Pattern
+		Utils.header("Facade Design Pattern");
+		callFacade();
 	}
 
 	/*
@@ -84,5 +89,17 @@ public class StructuralPatternTest {
 				));
 		
 		System.out.println("Total Price: " + deliveryService.calculateOrderPrice());
+	}
+	
+	/*
+	 * Facade Design Patter
+	 * 
+	 */
+	private static void callFacade() {
+		
+		DwarvenGoldMineFacade facade = new DwarvenGoldMineFacade();
+		facade.startNewDay();
+		facade.workOnMine();
+		facade.endOfTheDay();
 	}
 }
