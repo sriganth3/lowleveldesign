@@ -19,6 +19,7 @@ import designpatterns.structural.composite.CompositeBox;
 import designpatterns.structural.composite.DeliveryService;
 import designpatterns.structural.composite.product.VideoGame;
 import designpatterns.structural.facade.DwarvenGoldMineFacade;
+import designpatterns.structural.flyweight.AlchemistShop;
 
 public class StructuralPatternTest {
 
@@ -39,6 +40,10 @@ public class StructuralPatternTest {
 		// Facade Design Pattern
 		Utils.header("Facade Design Pattern");
 		callFacade();
+		
+		// Flyweight Design Pattern
+		Utils.header("Flyweight Design Pattern");
+		callFlyWeight();
 	}
 
 	/*
@@ -92,7 +97,7 @@ public class StructuralPatternTest {
 	}
 	
 	/*
-	 * Facade Design Patter
+	 * Facade Design Pattern
 	 * 
 	 */
 	private static void callFacade() {
@@ -101,5 +106,14 @@ public class StructuralPatternTest {
 		facade.startNewDay();
 		facade.workOnMine();
 		facade.endOfTheDay();
+	}
+	
+	/*
+	 * Flyweight Design Pattern 
+	 * 
+	 */
+	private static void callFlyWeight() {
+		AlchemistShop shop = new AlchemistShop();
+		shop.drinkPotions();
 	}
 }
