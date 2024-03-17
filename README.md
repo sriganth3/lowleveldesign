@@ -10,6 +10,13 @@ Design patterns are typical solutions to commonly occurring problems in software
    - Prototype
    - Singleton
 2. Structural patterns
+   - Adapter
+   - Bridge
+   - Composite
+   - Decorator
+   - Facade
+   - Flyweight
+   - Proxy
 3. Behavioral patterns
 
 ## Creational patterns

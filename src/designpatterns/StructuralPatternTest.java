@@ -20,6 +20,9 @@ import designpatterns.structural.composite.DeliveryService;
 import designpatterns.structural.composite.product.VideoGame;
 import designpatterns.structural.facade.DwarvenGoldMineFacade;
 import designpatterns.structural.flyweight.AlchemistShop;
+import designpatterns.structural.proxy.IvoryWizardTower;
+import designpatterns.structural.proxy.Wizard;
+import designpatterns.structural.proxy.WizardTowerProxy;
 
 public class StructuralPatternTest {
 
@@ -44,6 +47,10 @@ public class StructuralPatternTest {
 		// Flyweight Design Pattern
 		Utils.header("Flyweight Design Pattern");
 		callFlyWeight();
+		
+		// Proxy Design Pattern
+		Utils.header("Proxy Design Pattern");		
+		callProxy();
 	}
 
 	/*
@@ -115,5 +122,19 @@ public class StructuralPatternTest {
 	private static void callFlyWeight() {
 		AlchemistShop shop = new AlchemistShop();
 		shop.drinkPotions();
+	}
+	
+	/*
+	 * Proxy Design Pattern
+	 * 
+	 */
+	
+	private static void callProxy() {
+		WizardTowerProxy proxy = new WizardTowerProxy(new IvoryWizardTower());
+		
+		proxy.enter(new Wizard("Harry Potter"));
+		proxy.enter(new Wizard("Albus Dumbledore"));
+		proxy.enter(new Wizard("Severus Snape"));
+		proxy.enter(new Wizard("Ron Weasley"));
 	}
 }
