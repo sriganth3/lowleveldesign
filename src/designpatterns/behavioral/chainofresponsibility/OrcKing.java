@@ -1,4 +1,4 @@
-package designpatterns.behavioral;
+package designpatterns.behavioral.chainofresponsibility;
 
 import java.util.Comparator;
 import java.util.List;
