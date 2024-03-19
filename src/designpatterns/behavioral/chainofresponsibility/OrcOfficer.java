@@ -1,12 +1,12 @@
-package designpatterns.behavioral;
+package designpatterns.behavioral.chainofresponsibility;
 
-public class OrcCommander implements RequestHandler{
+public class OrcOfficer implements RequestHandler{
 
 	
 	@Override
 	public boolean canHandle(Request req) {
 		
-		return req.getRequestType() == RequestType.DEFEND_CASTLE;
+		return req.getRequestType() == RequestType.COLLECT_TAX;
 	}
 
 	@Override
@@ -18,13 +18,12 @@ public class OrcCommander implements RequestHandler{
 	@Override
 	public String getName() {
 		
-		return "Orc Commander";
+		return "Orc Officer";
 	}
 
 	@Override
 	public int getPriority() {
-		
-		return 3;
+		return 2;
 	}
 
 }

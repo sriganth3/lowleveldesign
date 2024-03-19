@@ -1,4 +1,4 @@
-package designpatterns.behavioral;
+package designpatterns.behavioral.chainofresponsibility;
 
 public interface RequestHandler {
 
