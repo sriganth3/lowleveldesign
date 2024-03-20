@@ -9,6 +9,10 @@ import designpatterns.behavioral.iterator.Item;
 import designpatterns.behavioral.iterator.ItemType;
 import designpatterns.behavioral.iterator.Iterator;
 import designpatterns.behavioral.iterator.TreasureChest;
+import designpatterns.behavioral.mediator.ChatMediator;
+import designpatterns.behavioral.mediator.ChatRoom;
+import designpatterns.behavioral.mediator.User;
+import designpatterns.behavioral.mediator.ChatUser;
 import designpatterns.common.Utils;
 
 public class BehavioralPatternTest {
@@ -30,6 +34,10 @@ public class BehavioralPatternTest {
 		Utils.header("Iterator Pattern");
 		callIterator();
 		
+		
+		//Mediator Design Pattern
+		Utils.header("Mediator Pattern");
+		callMediator();
 		
 	}
 
@@ -90,6 +98,24 @@ public class BehavioralPatternTest {
 		while(iterator.hasNext()) {
 			System.out.println(iterator.next());
 		}
+		
+		
+	}
+	/*
+	 * Mediator Pattern
+	 * 
+	 */
+	private static void callMediator() {
+		ChatMediator chatRoom = new ChatRoom();
+		
+		User user1 = new ChatUser("Bob", chatRoom);
+		User user2 = new ChatUser("Alice", chatRoom);
+		
+		chatRoom.addMember(user1);
+		chatRoom.addMember(user2);
+		
+		user1.send("Hi Alice!");
+		user1.send("Hi Bob!");
 		
 		
 	}
