@@ -17,6 +17,7 @@ import designpatterns.behavioral.observer.Hobbit;
 import designpatterns.behavioral.observer.Observer;
 import designpatterns.behavioral.observer.Orc;
 import designpatterns.behavioral.observer.Weather;
+import designpatterns.behavioral.state.Phone;
 import designpatterns.behavioral.mediator.ChatUser;
 import designpatterns.common.Utils;
 
@@ -52,6 +53,10 @@ public class BehavioralPatternTest {
 		Utils.header("Observer Pattern");
 		callObserver();
 		
+		//State Design Pattern
+		Utils.header("State Pattern");
+		callState();
+		
 	}
 
 	/*
@@ -63,6 +68,7 @@ public class BehavioralPatternTest {
 	    king.makeRequest(new Request(RequestType.DEFEND_CASTLE, "defend castle"));
 	    king.makeRequest(new Request(RequestType.GAURD_PRISONERS, "gaurd prisoners"));
 	    king.makeRequest(new Request(RequestType.COLLECT_TAX, "collect tax"));
+	    
 	}
 	
 	/*
@@ -144,6 +150,7 @@ public class BehavioralPatternTest {
 		editor.undo();
 		editor.undo();
 		editor.undo();
+		
 	}
 	
 	/*
@@ -164,6 +171,24 @@ public class BehavioralPatternTest {
 		weather.timePasses();
 		weather.removeSubscribers(hobbit);
 		weather.timePasses();
+		
+	}
+	
+	/*
+	 * State Pattern
+	 * 
+	 */
+	private static void callState() {
+		Phone phone = new Phone();
+		
+		System.out.println(phone.onClickHome());
+		System.out.println(phone.onClickHome());
+		System.out.println(phone.onClickPower());
+		System.out.println(phone.onClickPower());
+		System.out.println(phone.onClickPower());
+		System.out.println(phone.onClickHome());
+		System.out.println(phone.onClickHome());
+		System.out.println(phone.onClickHome());
 		
 	}
 }
