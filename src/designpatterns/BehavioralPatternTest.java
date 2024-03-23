@@ -13,6 +13,10 @@ import designpatterns.behavioral.mediator.ChatMediator;
 import designpatterns.behavioral.mediator.ChatRoom;
 import designpatterns.behavioral.mediator.User;
 import designpatterns.behavioral.memento.Editor;
+import designpatterns.behavioral.observer.Hobbit;
+import designpatterns.behavioral.observer.Observer;
+import designpatterns.behavioral.observer.Orc;
+import designpatterns.behavioral.observer.Weather;
 import designpatterns.behavioral.mediator.ChatUser;
 import designpatterns.common.Utils;
 
@@ -43,6 +47,10 @@ public class BehavioralPatternTest {
 		//Memento Design Pattern
 		Utils.header("Memento Pattern");
 		callMemento();
+		
+		//Observer Design Pattern
+		Utils.header("Observer Pattern");
+		callObserver();
 		
 	}
 
@@ -136,5 +144,26 @@ public class BehavioralPatternTest {
 		editor.undo();
 		editor.undo();
 		editor.undo();
+	}
+	
+	/*
+	 * Observer Pattern
+	 * 
+	 */
+	private static void callObserver() {
+		Weather weather = new Weather();
+		
+		Observer hobbit = new Hobbit();
+		weather.addSubscribers(hobbit);
+		weather.timePasses();
+		
+		Observer orc = new Orc();
+		weather.timePasses();
+		weather.addSubscribers(orc);
+		weather.timePasses();
+		weather.timePasses();
+		weather.removeSubscribers(hobbit);
+		weather.timePasses();
+		
 	}
 }
