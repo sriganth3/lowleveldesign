@@ -12,6 +12,7 @@ import designpatterns.behavioral.iterator.TreasureChest;
 import designpatterns.behavioral.mediator.ChatMediator;
 import designpatterns.behavioral.mediator.ChatRoom;
 import designpatterns.behavioral.mediator.User;
+import designpatterns.behavioral.memento.Editor;
 import designpatterns.behavioral.mediator.ChatUser;
 import designpatterns.common.Utils;
 
@@ -38,6 +39,10 @@ public class BehavioralPatternTest {
 		//Mediator Design Pattern
 		Utils.header("Mediator Pattern");
 		callMediator();
+		
+		//Memento Design Pattern
+		Utils.header("Memento Pattern");
+		callMemento();
 		
 	}
 
@@ -97,10 +102,10 @@ public class BehavioralPatternTest {
 		iterator = chest.iterator(ItemType.WEAPON);
 		while(iterator.hasNext()) {
 			System.out.println(iterator.next());
-		}
-		
+		}	
 		
 	}
+	
 	/*
 	 * Mediator Pattern
 	 * 
@@ -117,6 +122,19 @@ public class BehavioralPatternTest {
 		user1.send("Hi Alice!");
 		user1.send("Hi Bob!");
 		
+	}
+	
+	/*
+	 * Memento Pattern
+	 * 
+	 */
+	private static void callMemento() {
+		Editor editor = new Editor();
 		
+		editor.write("Hello! ");
+		editor.write("How are you?");
+		editor.undo();
+		editor.undo();
+		editor.undo();
 	}
 }
