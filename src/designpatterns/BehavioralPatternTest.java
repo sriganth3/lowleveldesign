@@ -18,6 +18,9 @@ import designpatterns.behavioral.observer.Observer;
 import designpatterns.behavioral.observer.Orc;
 import designpatterns.behavioral.observer.Weather;
 import designpatterns.behavioral.state.Phone;
+import designpatterns.behavioral.strategy.AddStrategy;
+import designpatterns.behavioral.strategy.Context;
+import designpatterns.behavioral.strategy.SubtractStrategy;
 import designpatterns.behavioral.mediator.ChatUser;
 import designpatterns.common.Utils;
 
@@ -56,6 +59,10 @@ public class BehavioralPatternTest {
 		//State Design Pattern
 		Utils.header("State Pattern");
 		callState();
+		
+		//Strategy Design Pattern
+		Utils.header("Strategy Pattern");
+		callStrategy();
 		
 	}
 
@@ -189,6 +196,21 @@ public class BehavioralPatternTest {
 		System.out.println(phone.onClickHome());
 		System.out.println(phone.onClickHome());
 		System.out.println(phone.onClickHome());
+		
+	}
+	
+	
+	/*
+	 * Strategy Pattern
+	 * 
+	 */
+	private static void callStrategy() {
+		
+		Context context = new Context(new AddStrategy());
+		System.out.println("Result of addition: " + context.executeStrategy(15, 9));
+		
+		context = new Context(new SubtractStrategy());
+		System.out.println("Result of subtraction: " + context.executeStrategy(15, 9));
 		
 	}
 }
