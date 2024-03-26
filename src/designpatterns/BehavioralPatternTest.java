@@ -21,6 +21,9 @@ import designpatterns.behavioral.state.Phone;
 import designpatterns.behavioral.strategy.AddStrategy;
 import designpatterns.behavioral.strategy.Context;
 import designpatterns.behavioral.strategy.SubtractStrategy;
+import designpatterns.behavioral.templatemethod.ConcreteHouseBuilder;
+import designpatterns.behavioral.templatemethod.HouseBuilder;
+import designpatterns.behavioral.templatemethod.WoodenHouseBuilder;
 import designpatterns.behavioral.mediator.ChatUser;
 import designpatterns.common.Utils;
 
@@ -62,7 +65,11 @@ public class BehavioralPatternTest {
 		
 		//Strategy Design Pattern
 		Utils.header("Strategy Pattern");
-		callStrategy();
+		callStrategy();		
+		
+		//Template Method Design Pattern
+		Utils.header("Template Method Pattern");
+		callTemplateMethod();
 		
 	}
 
@@ -212,5 +219,17 @@ public class BehavioralPatternTest {
 		context = new Context(new SubtractStrategy());
 		System.out.println("Result of subtraction: " + context.executeStrategy(15, 9));
 		
+	}
+	
+	/*
+	 * Template Method Pattern
+	 * 
+	 */
+	private static void callTemplateMethod() {
+		HouseBuilder house = new ConcreteHouseBuilder();
+		house.build();
+		
+		house = new WoodenHouseBuilder();
+		house.build();
 	}
 }
