@@ -25,6 +25,13 @@ import designpatterns.behavioral.templatemethod.ConcreteHouseBuilder;
 import designpatterns.behavioral.templatemethod.HouseBuilder;
 import designpatterns.behavioral.templatemethod.WoodenHouseBuilder;
 import designpatterns.behavioral.mediator.ChatUser;
+import designpatterns.behavioral.visitor.Commander;
+import designpatterns.behavioral.visitor.CommanderVisitor;
+import designpatterns.behavioral.visitor.Sergeant;
+import designpatterns.behavioral.visitor.SergeantVisitor;
+import designpatterns.behavioral.visitor.Solider;
+import designpatterns.behavioral.visitor.SoliderVisitor;
+import designpatterns.behavioral.visitor.Unit;
 import designpatterns.common.Utils;
 
 public class BehavioralPatternTest {
@@ -71,6 +78,10 @@ public class BehavioralPatternTest {
 		Utils.header("Template Method Pattern");
 		callTemplateMethod();
 		
+		//Visitor Method Design Pattern
+		Utils.header("Visitor Pattern");
+		callVisitor();
+				
 	}
 
 	/*
@@ -231,5 +242,18 @@ public class BehavioralPatternTest {
 		
 		house = new WoodenHouseBuilder();
 		house.build();
+	}
+	
+	/*
+	 * Visitor Pattern
+	 * 
+	 */
+	
+	private static void callVisitor() {
+		Unit unit = new Commander(new Sergeant(new Solider(), new Solider()), new Sergeant(new Solider(), new Solider()));
+		unit.accept(new CommanderVisitor());
+		unit.accept(new SergeantVisitor());
+		unit.accept(new SoliderVisitor());
+		
 	}
 }
