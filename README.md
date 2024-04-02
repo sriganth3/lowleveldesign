@@ -18,6 +18,16 @@ Design patterns are typical solutions to commonly occurring problems in software
    - Flyweight
    - Proxy
 3. Behavioral patterns
+   - Chain of Responsibility
+   - Command
+   - Iterator
+   - Mediator
+   - Memento
+   - Observer
+   - State
+   - Strategy
+   - Template Method
+   - Visitor
 
 ## Creational patterns
 These patterns provide various object creation mechanisms, which increase flexibility and reuse of existing code.
