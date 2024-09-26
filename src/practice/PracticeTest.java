@@ -5,6 +5,11 @@ import practice.factorymethod1.VehicleFactory;
 import practice.factorymethod1.CarFactory;
 import practice.factorymethod1.MotorCycleFactory;
 import practice.factorymethod1.Vehicle;
+import practice.factorymethod2.EmailFactory;
+import practice.factorymethod2.Notification;
+import practice.factorymethod2.NotificationFactory;
+import practice.factorymethod2.PushNotificationFactory;
+import practice.factorymethod2.SMSFactory;
 
 
 /**
@@ -43,5 +48,39 @@ public class PracticeTest {
 		System.out.println(car.getType());        // Output: Car
 		System.out.println(bike.getType());       // Output: Bike
 		System.out.println(motorCycle.getType()); // Output: MotorCycle
+
+
+		/**
+		 * Problem Statement
+		 * You are required to create a notification system that can send various types of notifications such as 
+		 * SMS, Email, and Push Notification. Each notification type has a different message format but needs to 
+		 * be handled in a uniform way by the client code. The system should be easily extendable to support new 
+		 * types of notifications in the future.
+		 * 
+		 * Objective:
+		 * Use the Factory Method Pattern to create different types of notifications using specific factories, 
+		 * ensuring that the client code is abstracted from the exact implementation of each notification type.
+		 */
+
+
+		// Notification System
+
+		// Create factory objects for different types of notifications
+		NotificationFactory smsFactory = new SMSFactory();
+		NotificationFactory emailFactory = new EmailFactory();
+		NotificationFactory pushNotificationFactory = new PushNotificationFactory();
+
+		// Create notification objects using their respective factories
+		Notification sms = smsFactory.createNotification("This is an SMS notification");
+		Notification email = emailFactory.createNotification("This is an Email notification");
+		Notification pushNotification = pushNotificationFactory.createNotification("This is a Push notification");
+
+		// Output the message and type of each notification
+		// The client can handle each notification uniformly without worrying about the specific notification type
+		System.out.println("Message: " + sms.getMessage() + " | Received Type: " + sms.getType());               // Output: SMS message and type
+		System.out.println("Message: " + email.getMessage() + " | Received Type: " + email.getType());           // Output: Email message and type
+		System.out.println("Message: " + pushNotification.getMessage() + " | Received Type: " + pushNotification.getType()); // Output: Push Notification message and type 
+
+
 	}
 }
