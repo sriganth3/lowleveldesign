@@ -1,5 +1,7 @@
 package practice;
 
+import practice.builder1.Meal;
+import practice.builder1.MealConcreteBuilder;
 import practice.factorymethod1.BikeFactory;
 import practice.factorymethod1.VehicleFactory;
 import practice.factorymethod1.CarFactory;
@@ -83,33 +85,56 @@ public class PracticeTest {
 		System.out.println("Message: " + email.getMessage() + " | Received Type: " + email.getType());           // Output: Email message and type
 		System.out.println("Message: " + pushNotification.getMessage() + " | Received Type: " + pushNotification.getType()); // Output: Push Notification message and type 
 
-		
-		 /**
-	     * Problem Statement:
-	     * You need to manage a database connection in an application that can only 
-	     * have a single instance of the connection manager. This ensures that all 
-	     * parts of the application use the same database connection and prevents 
-	     * resource conflicts. Implement the Singleton pattern to achieve this.
-	     */
-		
+
+		/**
+		 * Problem Statement:
+		 * You need to manage a database connection in an application that can only 
+		 * have a single instance of the connection manager. This ensures that all 
+		 * parts of the application use the same database connection and prevents 
+		 * resource conflicts. Implement the Singleton pattern to achieve this.
+		 */
+
 		DatabaseConnectionManager instance1 = DatabaseConnectionManager.getInstance();
 		DatabaseConnectionManager instance2 = DatabaseConnectionManager.getInstance();
-		
+
 		System.out.println(instance1 == instance2); // Output: true
 		instance1.connect(); // Output: Successfully connected to the database.
 		instance1.disconnect(); // Output: Successfully disconnected from the database.
-		
+
 		/**
 		 * Problem Statement:
-	     * The application requires a centralized logging system that allows 
-	     * tracking of various events and errors throughout the application. 
-	     * Implement a Singleton pattern for the logging mechanism to ensure that 
-	     * all log messages are handled consistently from a single instance.
+		 * The application requires a centralized logging system that allows 
+		 * tracking of various events and errors throughout the application. 
+		 * Implement a Singleton pattern for the logging mechanism to ensure that 
+		 * all log messages are handled consistently from a single instance.
 		 */
-		
+
 		LogManager logger = LogManager.getLoggerInstance(); 
 		logger.info("Using Logging As Singleton Example"); // Output: INFO [practice.PracticeTest]: Using Logging As Singleton Example
-		
-		
+
+
+		/**
+		 * Problem Statement:
+		 * 
+		 * You are tasked with designing a system to create complex meal orders in a restaurant 
+		 * where customers can customize their meals by selecting different components such as 
+		 * a main course, side dish, drink, dessert, and optional add-ons. 
+		 * 
+		 * Objective:
+		 * Implement the Builder Pattern to allow clients to construct a customizable meal 
+		 * with various components and optional add-ons, while keeping the meal creation process 
+		 * abstract and flexible.
+		 */
+
+
+		MealConcreteBuilder mealBuilder = new MealConcreteBuilder("Pizza");
+		Meal meal = mealBuilder.addAddOns("Cheese")
+				.addDessert("Ice Cream")
+				.addAddOns("Olives")
+				.addSideDish("Garlic Bread")
+				.addDrinks("Coke").build();
+		System.out.println(meal);
+
+
 	}
 }
