@@ -1,5 +1,10 @@
 package practice;
 
+import practice.adapter1.AV;
+import practice.adapter1.AudioPlayer;
+import practice.adapter1.AudioPlayerAdapter;
+import practice.adapter1.MP3;
+import practice.adapter1.MP4;
 import practice.builder1.Meal;
 import practice.builder1.MealConcreteBuilder;
 import practice.factorymethod1.BikeFactory;
@@ -160,5 +165,20 @@ public class PracticeTest {
 		System.out.println(template.equals(clonedReport));
 		System.out.println(template);
 		System.out.println(clonedReport);
+		
+        MP3 mp3 = new MP3("Song.mp3", "MP3 Audio Data");
+
+        AV av = new AV("MP4 Audio Data", "MP4 Video Data");
+        MP4 mp4 = new MP4("Video.mp4", av);
+
+        AudioPlayer audioPlayer = new AudioPlayer();
+
+
+        audioPlayer.play(mp3);
+
+        AudioPlayerAdapter adapter = new AudioPlayerAdapter();
+
+        MP3 convertedMP4 = adapter.convertToMP3(mp4);
+        audioPlayer.play(convertedMP4);
 	}
 }
