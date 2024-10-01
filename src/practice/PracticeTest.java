@@ -12,6 +12,7 @@ import practice.factorymethod2.Notification;
 import practice.factorymethod2.NotificationFactory;
 import practice.factorymethod2.PushNotificationFactory;
 import practice.factorymethod2.SMSFactory;
+import practice.prototype1.ReportTemplate;
 import practice.singleton1.DatabaseConnectionManager;
 import practice.singleton2.LogManager;
 
@@ -115,7 +116,6 @@ public class PracticeTest {
 
 		/**
 		 * Problem Statement:
-		 * 
 		 * You are tasked with designing a system to create complex meal orders in a restaurant 
 		 * where customers can customize their meals by selecting different components such as 
 		 * a main course, side dish, drink, dessert, and optional add-ons. 
@@ -136,5 +136,29 @@ public class PracticeTest {
 		System.out.println(meal);
 
 
+		/**
+		 * Problem Statement:
+		 * You are tasked with developing a report generation system where different teams in an organization
+		 * need to create reports based on a standardized template. However, each team may customize the content
+		 * and headers of their reports. The system should ensure that a common template is maintained and 
+		 * can be used to create copies for customization without affecting the original template.
+		 * 
+		 * Objective:
+		 * Implement the Prototype Pattern to allow teams to clone a common `ReportTemplate` and make 
+		 * modifications to it, such as changing the report content and headers. The system should ensure 
+		 * that the original template remains unmodified, even as various teams create customized versions.
+		 */
+
+
+		ReportTemplate template = ReportTemplate.getInstance();
+
+		ReportTemplate clonedReport = template.clone();
+		System.out.println(template.equals(clonedReport));
+		clonedReport.setContent("New Content");
+		clonedReport.setHeader("2024 Report");
+
+		System.out.println(template.equals(clonedReport));
+		System.out.println(template);
+		System.out.println(clonedReport);
 	}
 }
