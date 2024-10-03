@@ -7,11 +7,16 @@ import practice.adapter1.MP3;
 import practice.adapter1.MP4;
 import practice.builder1.Meal;
 import practice.builder1.MealConcreteBuilder;
+import practice.decorator1.BoldDecorator;
+import practice.decorator1.ItalicDecorator;
+import practice.decorator1.PlainText;
+import practice.decorator1.Text;
+import practice.decorator1.TextDecorator;
 import practice.factorymethod1.BikeFactory;
-import practice.factorymethod1.VehicleFactory;
 import practice.factorymethod1.CarFactory;
 import practice.factorymethod1.MotorCycleFactory;
 import practice.factorymethod1.Vehicle;
+import practice.factorymethod1.VehicleFactory;
 import practice.factorymethod2.EmailFactory;
 import practice.factorymethod2.Notification;
 import practice.factorymethod2.NotificationFactory;
@@ -20,7 +25,6 @@ import practice.factorymethod2.SMSFactory;
 import practice.prototype1.ReportTemplate;
 import practice.singleton1.DatabaseConnectionManager;
 import practice.singleton2.LogManager;
-
 
 /**
  * Problem Statement and Comments added by GPT
@@ -165,20 +169,58 @@ public class PracticeTest {
 		System.out.println(template.equals(clonedReport));
 		System.out.println(template);
 		System.out.println(clonedReport);
-		
-        MP3 mp3 = new MP3("Song.mp3", "MP3 Audio Data");
-
-        AV av = new AV("MP4 Audio Data", "MP4 Video Data");
-        MP4 mp4 = new MP4("Video.mp4", av);
-
-        AudioPlayer audioPlayer = new AudioPlayer();
 
 
-        audioPlayer.play(mp3);
+		/*
+		 * Problem Statement:
+		 * In a text processing application, there are various audio formats such as MP3 and MP4.
+		 * The existing audio player only supports MP3 files and does not recognize MP4 files,
+		 * which include both audio and video data. To enhance the application's functionality
+		 * and allow it to handle different audio formats seamlessly, we can use the Adapter Pattern.
+		 *
+		 * The objective is to create an adapter that converts MP4 audio into a format compatible 
+		 * with the existing MP3 audio player. This will allow the audio player to play both MP3 
+		 * and MP4 audio files without modifying its existing functionality.
+		 */
 
-        AudioPlayerAdapter adapter = new AudioPlayerAdapter();
+		MP3 mp3 = new MP3("Song.mp3", "MP3 Audio Data");
 
-        MP3 convertedMP4 = adapter.convertToMP3(mp4);
-        audioPlayer.play(convertedMP4);
+		AV av = new AV("MP4 Audio Data", "MP4 Video Data");
+		MP4 mp4 = new MP4("Video.mp4", av);
+
+		AudioPlayer audioPlayer = new AudioPlayer();
+
+
+		audioPlayer.play(mp3);
+
+		AudioPlayerAdapter adapter = new AudioPlayerAdapter();
+
+		MP3 convertedMP4 = adapter.convertToMP3(mp4);
+		audioPlayer.play(convertedMP4);
+
+
+		/*
+		 * Problem Statement:
+		 *
+		 * In a text processing application, we want to enhance the formatting of text without
+		 * altering the original text components. The application supports various text styles,
+		 * and we aim to implement a flexible way to combine these styles dynamically.
+		 *
+		 * The objective is to use the Decorator Pattern to allow text components (like plain text)
+		 * to be wrapped with additional behavior (like bold, italic, or underline) without modifying
+		 * the existing text classes. This will enable users to create rich text formats by stacking
+		 * multiple decorators, providing a more versatile and maintainable way to manage text formatting.
+		 */
+
+		Text text = new PlainText("New Text");
+		System.out.println(text.format());
+
+		TextDecorator italicText = new ItalicDecorator(text);
+		System.out.println(italicText.format());
+
+		TextDecorator boldItalicText = new BoldDecorator(italicText);
+		System.out.println(boldItalicText.format());
+
+
 	}
 }
