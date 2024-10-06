@@ -12,6 +12,10 @@ import practice.decorator1.ItalicDecorator;
 import practice.decorator1.PlainText;
 import practice.decorator1.Text;
 import practice.decorator1.TextDecorator;
+import practice.decorator2.Bevarage;
+import practice.decorator2.CaramelDecorator;
+import practice.decorator2.Espresso;
+import practice.decorator2.MilkDecorator;
 import practice.factorymethod1.BikeFactory;
 import practice.factorymethod1.CarFactory;
 import practice.factorymethod1.MotorCycleFactory;
@@ -220,6 +224,26 @@ public class PracticeTest {
 
 		TextDecorator boldItalicText = new BoldDecorator(italicText);
 		System.out.println(boldItalicText.format());
+
+
+		/*
+		 * Problem Statement:
+		 * In a coffee shop system, we want to dynamically create beverage orders by allowing customers to add
+		 * various ingredients (like milk, caramel, whipped cream, etc.) to their basic drinks (such as espresso, latte, etc.).
+		 *
+		 * The challenge is to add new ingredients to beverages without altering the base classes of the drinks.
+		 * We want a flexible design where multiple ingredients can be combined, with each ingredient adding its own 
+		 * cost and modifying the description of the beverage.
+		 *
+		 * The solution is to use the Decorator Pattern, where each additional ingredient is implemented as a decorator,
+		 * wrapping the base beverage object, allowing the user to compose different drink combinations dynamically.
+		 */
+
+
+		Bevarage beverage = new Espresso();
+		beverage = new MilkDecorator(beverage); // Add Milk
+		beverage = new CaramelDecorator(beverage); // Add Caramel
+		System.out.println("Bevarage ingredients: " + beverage.getIngredients() + " - Cost: $" + beverage.cost());
 
 
 	}
