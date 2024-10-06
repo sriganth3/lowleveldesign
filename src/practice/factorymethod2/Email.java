@@ -11,13 +11,13 @@ public class Email implements Notification {
 
 	@Override
 	public String getMessage() {
-		// TODO Auto-generated method stub
+		
 		return message;
 	}
 
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
+		
 		return "Email";
 	}
 

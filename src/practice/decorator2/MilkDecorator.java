@@ -9,14 +9,14 @@ public class MilkDecorator extends FlavourDecorator {
 
 	@Override
 	public String getIngredients() {
-		// TODO Auto-generated method stub
+		
 		return this.beverage.getIngredients() + ", Milk";
 	}
 
 
 	@Override
 	public double cost() {
-		// TODO Auto-generated method stub
+		
 		return this.beverage.cost() + .10;
 	}
 

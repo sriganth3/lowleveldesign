@@ -8,7 +8,7 @@ public class VideoGame extends Product {
 
 	@Override
 	public double calculatePrice() {
-		// TODO Auto-generated method stub
+		
 		return getPrice();
 	}
 	

@@ -9,7 +9,7 @@ public class Espresso implements Bevarage {
 
 	@Override
 	public double cost() {
-		// TODO Auto-generated method stub
+		
 		return .95;
 	}
 
