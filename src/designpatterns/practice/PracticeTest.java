@@ -29,6 +29,12 @@ import designpatterns.practice.factorymethod2.SMSFactory;
 import designpatterns.practice.prototype1.ReportTemplate;
 import designpatterns.practice.singleton1.DatabaseConnectionManager;
 import designpatterns.practice.singleton2.LogManager;
+import designpatterns.practice.strategy1.CreditCardPayment;
+import designpatterns.practice.strategy1.CryptoPayment;
+import designpatterns.practice.strategy1.PayPalPayment;
+import designpatterns.practice.strategy1.PaymentSelector;
+import designpatterns.practice.strategy1.PaymentStrategy;
+
 
 /**
  * Problem Statement and Comments added by GPT
@@ -175,7 +181,7 @@ public class PracticeTest {
 		System.out.println(clonedReport);
 
 
-		/*
+		/**
 		 * Problem Statement:
 		 * In a text processing application, there are various audio formats such as MP3 and MP4.
 		 * The existing audio player only supports MP3 files and does not recognize MP4 files,
@@ -203,7 +209,7 @@ public class PracticeTest {
 		audioPlayer.play(convertedMP4);
 
 
-		/*
+		/**
 		 * Problem Statement:
 		 *
 		 * In a text processing application, we want to enhance the formatting of text without
@@ -226,7 +232,7 @@ public class PracticeTest {
 		System.out.println(boldItalicText.format());
 
 
-		/*
+		/**
 		 * Problem Statement:
 		 * In a coffee shop system, we want to dynamically create beverage orders by allowing customers to add
 		 * various ingredients (like milk, caramel, whipped cream, etc.) to their basic drinks (such as espresso, latte, etc.).
@@ -246,5 +252,32 @@ public class PracticeTest {
 		System.out.println("Bevarage ingredients: " + beverage.getIngredients() + " - Cost: $" + beverage.cost());
 
 
+		/**
+		 * Problem Statement:
+		 *
+		 * In a payment processing system, there are multiple payment methods such as Credit Card, PayPal, and Cryptocurrency.
+		 * The system should be flexible enough to accommodate these various payment methods and allow for easy addition of 
+		 * new payment methods in the future. The payment logic for each method may vary, and we want to avoid tightly 
+		 * coupling the payment selection logic with specific payment methods.
+		 *
+		 * The goal is to implement a design where:
+		 * 1. A user can choose different payment methods dynamically without changing the core logic.
+		 * 2. It should be easy to add new payment methods without modifying existing code.
+		 * 3. The code should adhere to the Open/Closed Principle (OCP) from SOLID, where new functionality can be added 
+		 *    without altering existing code.
+		 */
+
+
+		PaymentStrategy strategy = new CreditCardPayment();
+		PaymentSelector selector = new PaymentSelector(strategy);
+		selector.pay("2435839849", 199);
+
+		strategy = new PayPalPayment();
+		selector.setStrategy(strategy);
+		selector.pay("2435834545", 139);
+
+		strategy = new CryptoPayment();
+		selector.setStrategy(strategy);
+		selector.pay("2435398446", 399);
 	}
 }
